@@ -8,22 +8,9 @@ class MyHomePage extends StatefulWidget{
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List colors = [
-    Colors.red,
-    Colors.green,
-    Colors.blue,
-    Colors.yellow,
-    Colors.black,
-    Colors.cyan,
-    Colors.brown,
-    Colors.deepOrange,
-    Colors.tealAccent,
-    Colors.purple
-  ];
-
   Random random = new Random();
 
-  int index = 0;
+  var bgColor = Color.fromARGB(255, 255, 0, 0);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text('Test project'),
         ),
-        backgroundColor: colors[index],
+        backgroundColor: bgColor,
         body: Center(
           child: Text('Hey there!'),
         ),
@@ -43,7 +30,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _changeColor() {
     setState(() {
-      index = random.nextInt(10);
+      bgColor = Color.fromARGB(
+          random.nextInt(256),
+          random.nextInt(256),
+          random.nextInt(256),
+          random.nextInt(256)
+      );
     });
   }
 }
